@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Diligence · Understand the business</title>
+  <link rel="stylesheet" href="/style.css"><script src="/api.js" defer></script><script src="/app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="Diligence home"><span class="brand-mark">d.</span> diligence<span class="local-tag">LOCAL</span></a>
+    <div class="workspace-label">YOUR WORKSPACE</div>
+    <div id="deck-list" class="deck-list"></div>
+    <button id="upload-button" class="upload-button">＋ Import pitch deck</button>
+    <input id="upload" type="file" accept="application/pdf,.pdf" hidden>
+    <div class="privacy"><span class="privacy-icon">◈</span><strong>On your machine.</strong><p>Slides and analysis stay local.<br>Powered by Qwen in LM Studio.</p></div>
+  </aside>
+  <main>
+    <header class="topbar"><span>Workspace <span class="slash">/</span> <span id="deck-breadcrumb">Pitch deck</span></span><button id="connection" class="connection"><span class="dot"></span><span id="connection-label">Checking LM Studio</span></button></header>
+    <div class="content">
+      <div id="notice" role="status" aria-live="polite" hidden></div>
+      <div class="eyebrow">FIRST, UNDERSTAND THE BUSINESS</div>
+      <div class="heading-row"><div><h1 id="deck-title">From pitch to understanding.</h1><p class="intro">Read the text. See the slide. Put the story together.</p></div><span class="mode-badge">Face-value explanation</span></div>
+      <section class="workflow" aria-label="Analysis workflow">
+        <div><span class="step-number">01</span><strong>Ingest the deck</strong><p>Render every slide and extract its text.</p></div>
+        <div><span class="step-number">02</span><strong>Understand each slide</strong><p>Qwen combines vision with slide text.</p></div>
+        <div><span class="step-number">03</span><strong>Explain the business</strong><p>Collate the story with slide references.</p></div>
+      </section>
+      <section class="controls">
+        <div><label for="model">LOCAL VISION MODEL</label><select id="model" aria-label="Local Qwen vision model"><option value="">Connect LM Studio</option></select></div>
+        <div class="deck-stats"><strong id="slide-count">—</strong><span>slides in this deck</span></div>
+        <button id="analyze" class="primary" disabled>Understand this deck <span>↗</span></button>
+      </section>
+      <div class="run-bar" id="run-bar" hidden><div><strong id="stage">Ready</strong><p id="progress-detail"></p></div><div class="run-actions"><button id="stop" hidden>Stop</button><button id="resume" hidden>Resume analysis</button></div></div>
+      <nav class="tabs" aria-label="Deck views"><button data-tab="overview" class="active">Business explanation</button><button data-tab="slides">Slide by slide <span id="completed-count">0</span></button><button data-tab="context">Context & activity</button></nav>
+      <section id="overview" class="tab-panel">
+        <div id="empty-state" class="empty-state"><div class="empty-icon">⌘</div><h2>A clear picture, grounded in the deck.</h2><p>Start an analysis to get a plain-English explanation of the business,<br>with a traceable interpretation of every slide.</p><div class="empty-footnote">Deck claims are presented at face value. No external research or scoring.</div></div>
+        <div id="report" hidden></div>
+      </section>
+      <section id="slides" class="tab-panel" hidden><div class="slide-layout"><div id="slide-nav"></div><article id="slide-detail"><p>Select a slide to review its text, visual observations, and combined interpretation.</p></article></div></section>
+      <section id="context" class="tab-panel" hidden><div class="context-intro"><h2>Small contexts. A traceable story.</h2><p>Each slide gets a fresh vision context, followed by a separate text-and-vision interpretation. Six-slide summaries carry source references into the final explanation. Qwen can retrieve specific interpretations using local tools.</p></div><div id="context-details"></div><div id="activity"></div></section>
+      <footer><span>Local inference · Local storage · No cloud services</span><span id="exports" hidden><a id="export-md" href="#">Export Markdown ↗</a><a id="export-json" href="#">Export JSON ↗</a></span></footer>
+    </div>
+  </main>
+</body>
+</html>

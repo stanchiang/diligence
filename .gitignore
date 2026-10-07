@@ -1,0 +1,13 @@
+node_modules/
+data/
+web/dist/
+spike/out/
+.DS_Store
+
+# Pitch decks are confidential; never commit them.
+*.pdf
+.playwright-mcp/
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
